@@ -1,0 +1,25 @@
+type Todo {
+    id:ID!
+    name:String!
+    content:String!
+    status:statusEnum!
+    user:User!
+}
+type User {
+    id:ID!
+    name:String!
+    email:String!
+    todos:[Todo!]!
+}
+enum statusEnum {
+    DONE
+    WAITING
+    IN_PROGRESS
+    CANCELED
+}
+
+type Query {
+    hello(name: String): String!
+    getTodo(id:ID):Todo
+    getUser(id:ID):User
+}
