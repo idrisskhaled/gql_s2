@@ -18,8 +18,29 @@ enum statusEnum {
     CANCELED
 }
 
+input AddTodoInput{
+    name:String!
+    content:String!
+    user:ID!
+}
+input UpdateTodoInput{
+    name:String
+    content:String
+    status:statusEnum
+    user:ID
+}
+type Mutation {
+    addTodo(addTodoInput:AddTodoInput):Todo
+    updateTodo(id:String,updateTodoInput:UpdateTodoInput):Todo
+    deleteTodo(id:String):Todo
+}
 type Query {
     hello(name: String): String!
     getTodo(id:ID):Todo
     getUser(id:ID):User
+}
+type Subscription{
+    addTodo:Todo
+    updateTodo:Todo
+    removeTodo:Todo
 }
